@@ -84,16 +84,18 @@ document.addEventListener('DOMContentLoaded', function() {
       addBotMessage(botResponse);
     }
   }
+// Assuming you have set up the LM and loaded it as `lm` variable
 
-  // ... (previous code)
+async function searchInternalDocuments(query) {
+  // Generate response using the LM
+  const response = await lm.generate(query);
 
-  userInput.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-      processUserInput();
-    }
-  });
+  // Extract the generated answer from the response
+  const answer = response.choices[0].text;
 
-  // Example initial bot greeting
-  addBotMessage('Hello! How can I assist you today?');
-});
-
+  if (answer) {
+    return answer;
+  } else {
+    return 'I am sorry, but I couldn\'t find an answer to your question.';
+  }
+}
