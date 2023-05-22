@@ -1,0 +1,7 @@
+import openai
+
+# Set up OpenAI API credentials
+openai.api_key = 'YOUR_API_KEY'
+
+# Initialize the LM
+lm = openai.Completion.create(engine='davinci', model='davinci-codex')
