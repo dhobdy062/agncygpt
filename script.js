@@ -69,3 +69,31 @@ document.addEventListener('DOMContentLoaded', function() {
   // Example initial bot greeting
   addBotMessage('Hello! How can I assist you today?');
 });
+// ... (previous code)
+
+  function processUserInput() {
+    const userInputValue = userInput.value.trim();
+    if (userInputValue !== '') {
+      addUserMessage(userInputValue);
+      userInput.value = '';
+
+      // Call your backend API or perform document search logic here
+      // Example: Retrieve answer from internal documents based on user query
+      const botResponse = searchInternalDocuments(userInputValue);
+
+      addBotMessage(botResponse);
+    }
+  }
+
+  // ... (previous code)
+
+  userInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      processUserInput();
+    }
+  });
+
+  // Example initial bot greeting
+  addBotMessage('Hello! How can I assist you today?');
+});
+
